@@ -5,8 +5,9 @@ tags = {
   Environment = "Test"
 }
 
+vm_size = "Standard_DS1_v2"
 
-vm_instances =¨{
+vm_instances ={
   vm1 = {
     network_interface_id = "VMVote"
     size = "Standard_DS1_v2"
@@ -21,7 +22,7 @@ vm_instances =¨{
   }
 }
 admin_username = "adminuser"
-admin_password = "123456"
+admin_password = "Admin@123456"
 
 
 
@@ -48,15 +49,5 @@ security_rule = {
     destination_port_range     = "80"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
-  }
-}
-
-subnets = {
-  public_subnet = {
-    cidr_block = "10.0.1.0/24"
-  }
- 
-  private_subnet = {
-    cidr_block = "10.0.2.0/24"
   }
 }

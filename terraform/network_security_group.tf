@@ -24,7 +24,7 @@ resource "azurerm_network_security_group" "NSGFront" {
   }
 }
 
-Resource "azurerm_network_security_group" "NSGBack" {
+resource "azurerm_network_security_group" "NSGBack" {
   name                = "Back"
   location            = azurerm_resource_group.myRg.location
   resource_group_name = azurerm_resource_group.myRg.name
@@ -50,7 +50,7 @@ Resource "azurerm_network_security_group" "NSGBack" {
   }
 }
 
-Resource "azurerm_network_security_group" "NSGdb" {
+resource "azurerm_network_security_group" "NSGdb" {
   name                = "db"
   location            = azurerm_resource_group.myRg.location
   resource_group_name = azurerm_resource_group.myRg.name

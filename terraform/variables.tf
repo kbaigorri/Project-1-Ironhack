@@ -17,7 +17,7 @@ variable "vm_instances" {
     network_interface_id = string
     size = string
   }))
-
+}
 
 variable "admin_username" {
   type = string
@@ -35,10 +35,6 @@ variable "vm_size" {
   type = string
 }
 
-
-variable "subnets" {
-  type = any
-}
 
 variable "tags" {
 
