@@ -1,0 +1,36 @@
+- name: Install Docker on Remote Machine
+  hosts: all
+  become: true  # Para ejecutar con sudo
+  tasks:
+    - name: Download Docker installation script
+      get_url:
+        url: https://get.docker.com
+        dest: /tmp/get-docker.sh
+        mode: '0755'
+
+    - name: Run Docker installation script
+      command: sh /tmp/get-docker.sh
+
+    - name: sudo usermod
+      command: sudo usermod -aG docker $USER
+
+    - name: test docker
+      command: docker pull nginx:latest
+
+- name: Pull Docker vote image
+  hosts: voteVm1
+  tasks:
+    - name: Pull Docker vote image
+      command: docker pull piarnedo/repocurso:vote
+
+- name: Pull Docker result image
+  hosts: resultVm2
+  tasks:
+    - name: Pull Docker result image
+      command: docker pull piarnedo/repocurso:result
+
+- name: Pull Docker worker image
+  hosts: dbVm3
+  tasks:
+    - name: Pull Docker worker image
+      command: docker pull piarnedo/repocurso:worker
