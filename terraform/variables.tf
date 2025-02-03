@@ -15,20 +15,20 @@ variable "location" {
 variable "vm_instances" {
   type = map(object({
     network_interface_id = string
-    size = string
+    size                 = string
   }))
 }
 
 variable "admin_username" {
-  type = string
+  type        = string
   description = "VMs Adm username"
-  
+
 }
 
 variable "admin_password" {
-  type = string
+  type        = string
   description = "VMs Adm password"
-  
+
 }
 
 variable "vm_size" {

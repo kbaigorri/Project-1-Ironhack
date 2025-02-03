@@ -7,18 +7,18 @@ tags = {
 
 vm_size = "Standard_DS1_v2"
 
-vm_instances ={
+vm_instances = {
   vm1 = {
     network_interface_id = "VMVote"
-    size = "Standard_DS1_v2"
+    size                 = "Standard_DS1_v2"
   }
   vm2 = {
     network_interface_id = "VMResult"
-    size = "Standard_DS1_v2"
+    size                 = "Standard_DS1_v2"
   }
   vm3 = {
     network_interface_id = "VMdb"
-    size = "Standard_DS1_v2"
+    size                 = "Standard_DS1_v2"
   }
 }
 admin_username = "adminuser"

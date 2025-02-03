@@ -1,16 +1,16 @@
 resource "azurerm_network_interface" "nic1" {
 
-name =  "nic-1"
+  name = "nic-1"
 
-location = azurerm_resource_group.myRg.location
-resource_group_name = azurerm_resource_group.myRg.name
+  location            = azurerm_resource_group.myRg.location
+  resource_group_name = azurerm_resource_group.myRg.name
 
-ip_configuration {
-  name = "ipconfig1"
-  subnet_id =  azurerm_subnet.subnet1.id
-  private_ip_address_allocation = "Dynamic"
-  public_ip_address_id =  azurerm_public_ip.my_public_ip.id
-}
+  ip_configuration {
+    name                          = "ipconfig1"
+    subnet_id                     = azurerm_subnet.subnet1.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.my_public_ip.id
+  }
 
 }
 
@@ -24,18 +24,18 @@ resource "azurerm_network_interface_security_group_association" "example1" {
 
 
 resource "azurerm_network_interface" "nic2" {
-  
-name =  "nic-2"
 
-location = azurerm_resource_group.myRg.location
-resource_group_name = azurerm_resource_group.myRg.name
+  name = "nic-2"
 
-ip_configuration {
-  name = "ipconfig2"
-  subnet_id = azurerm_subnet.subnet1.id
-  private_ip_address_allocation = "Dynamic"
-  public_ip_address_id =  azurerm_public_ip.my_public_ip2.id
-}
+  location            = azurerm_resource_group.myRg.location
+  resource_group_name = azurerm_resource_group.myRg.name
+
+  ip_configuration {
+    name                          = "ipconfig2"
+    subnet_id                     = azurerm_subnet.subnet1.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.my_public_ip2.id
+  }
 
 }
 
@@ -47,19 +47,19 @@ resource "azurerm_network_interface_security_group_association" "example2" {
 
 
 resource "azurerm_network_interface" "nic3" {
-  
-name =  "nic-3"
 
-location = azurerm_resource_group.myRg.location
-resource_group_name = azurerm_resource_group.myRg.name
+  name = "nic-3"
 
-ip_configuration {
-  name = "ipconfig3"
-  subnet_id =  azurerm_subnet.subnet1.id
-  private_ip_address_allocation = "Dynamic"
-  public_ip_address_id =  azurerm_public_ip.my_public_ip3.id
-  
-}
+  location            = azurerm_resource_group.myRg.location
+  resource_group_name = azurerm_resource_group.myRg.name
+
+  ip_configuration {
+    name                          = "ipconfig3"
+    subnet_id                     = azurerm_subnet.subnet1.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.my_public_ip3.id
+
+  }
 
 }
 
