@@ -34,6 +34,7 @@
         env:
           REDIS_HOST: 10.0.1.5
           REDIS_PORT: "6379"
+        network_mode: host
 
 - name: Pull Docker result image
   hosts: resultVm2
