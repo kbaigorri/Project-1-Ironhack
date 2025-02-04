@@ -1,0 +1,3 @@
+voteVm1 ansible_host=13.93.55.100 ansible_user=adminuser ansible_password=Admin@123456 ansible_port=22 ansible_become=true ansible_become_method=sudo ansible_become_password=Admin@123456
+resultVm2 ansible_host=13.69.8.37 ansible_user=adminuser ansible_password=Admin@123456 ansible_port=22 ansible_become=true ansible_become_method=sudo ansible_become_password=Admin@123456
+dbVm3 ansible_host=13.80.117.34 ansible_user=adminuser ansible_password=Admin@123456 ansible_port=22 ansible_become=true ansible_become_method=sudo ansible_become_password=Admin@123456

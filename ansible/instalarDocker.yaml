@@ -1,0 +1,87 @@
+- name: Install Docker on Remote Machine
+  hosts: all
+  become: true  # Para ejecutar con sudo
+  tasks:
+    - name: Download Docker installation script
+      get_url:
+        url: https://get.docker.com
+        dest: /tmp/get-docker.sh
+        mode: '0755'
+
+    - name: Run Docker installation script
+      command: sh /tmp/get-docker.sh
+
+    - name: sudo usermod
+      command: sudo usermod -aG docker $USER
+
+    - name: test docker
+      command: docker pull nginx:latest
+
+- name: Pull Docker vote image
+  hosts: voteVm1
+  tasks:
+    - name: Pull Docker vote image
+      command: docker pull piarnedo/repocurso:vote
+
+    - name: ensure a vote container is running
+      docker_container:
+        name: vote_container
+        state: started
+        image: "piarnedo/repocurso:vote"
+        pull: true
+        ports:
+          - "80:80"
+        env:
+          REDIS_HOST: 10.0.1.5
+          REDIS_PORT: "6379"
+
+- name: Pull Docker result image
+  hosts: resultVm2
+  tasks:
+    - name: Pull Docker result image
+      command: docker pull piarnedo/repocurso:result
+
+    - name: ensure a result container is running
+      docker_container:
+        name: result_container
+        state: started
+        image: "piarnedo/repocurso:result"
+        pull: true
+        ports:
+          - "80:80"
+
+- name: Pull Docker worker image
+  hosts: dbVm3
+  tasks:
+    - name: Pull Docker worker image
+      command: docker pull piarnedo/repocurso:worker
+
+    - name: ensure a worker container is running
+      docker_container:
+        name: worker_container
+        state: started
+        image: "piarnedo/repocurso:worker"
+        pull: true
+        ports:
+          - "80:80"
+
+    - name: Redis installl
+      docker_container:
+        name: redis
+        state: started
+        image: "redis:5.0-alpine3.10"
+        pull: true
+        ports:
+          - "6379:6379"
+
+    - name: Postgres installl
+      docker_container:
+        name: db
+        state: started
+        image: "postgres:9.4"
+        pull: true
+        env:
+          POSTGRES_USER: "postgres"
+          POSTGRES_PASSWORD: "postgres"
+    
+
