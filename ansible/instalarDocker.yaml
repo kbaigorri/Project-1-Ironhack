@@ -56,6 +56,11 @@
   tasks:
     - name: Pull Docker worker image
       command: docker pull piarnedo/repocurso:worker
+      
+    - name: Create backend network
+      community.docker.docker_network:
+        name: backend
+        driver: bridge
 
     - name: ensure a worker container is running
       docker_container:
@@ -65,6 +70,8 @@
         pull: true
         ports:
           - "80:80"
+        networks:
+          - name: backend
 
     - name: Redis installl
       docker_container:
@@ -84,5 +91,7 @@
         env:
           POSTGRES_USER: "postgres"
           POSTGRES_PASSWORD: "postgres"
+        networks:
+          - name: backend
     
 
